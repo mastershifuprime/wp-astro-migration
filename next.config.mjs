@@ -1,7 +1,8 @@
-import type { NextConfig } from "next";
+// @ts-check
 import { withSentryConfig } from "@sentry/nextjs";
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
