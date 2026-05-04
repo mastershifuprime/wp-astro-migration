@@ -1,12 +1,19 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
-import { UserButton } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
+"use client";
 
-export default async function DashboardPage() {
-  const { userId } = await auth();
-  if (!userId) redirect("/sign-in");
+import { useAuth, useUser, UserButton } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-  const user = await currentUser();
+export default function DashboardPage() {
+  const { isSignedIn, isLoaded } = useAuth();
+  const { user } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) router.replace("/sign-in");
+  }, [isLoaded, isSignedIn, router]);
+
+  if (!isLoaded || !isSignedIn) return null;
 
   return (
     <div className="min-h-screen bg-gray-50">
