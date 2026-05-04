@@ -1,13 +1,10 @@
-import postgres from "postgres";
+import { neon } from "@neondatabase/serverless";
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL environment variable is required");
 }
 
-const sql = postgres(process.env.DATABASE_URL, {
-  max: 10,
-  idle_timeout: 20,
-  connect_timeout: 10,
-});
+// HTTP-based driver — works in Cloudflare Edge Runtime and Node.js
+const sql = neon(process.env.DATABASE_URL);
 
 export default sql;
