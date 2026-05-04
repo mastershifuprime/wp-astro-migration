@@ -1,14 +1,14 @@
-import { getPage } from "@/lib/content";
-import HomeClient from "@/components/HomeClient";
+import { getListPage } from "@/lib/contentParser";
+import HomeClient from "@/layouts/components/HomeClient";
 
 export default function Home() {
-  const { data } = getPage("home");
+  const { frontmatter } = getListPage("homepage/_index.md");
   return (
     <HomeClient
-      title={data.title}
-      tagline={data.tagline}
-      ctaPrimary={data.cta_primary}
-      ctaSecondary={data.cta_secondary}
+      title={frontmatter.title as string}
+      tagline={frontmatter.tagline as string}
+      ctaPrimary={frontmatter.cta_primary as string}
+      ctaSecondary={frontmatter.cta_secondary as string}
     />
   );
 }

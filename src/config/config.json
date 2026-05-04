@@ -1,0 +1,17 @@
+{
+  "site": {
+    "title": "THEA",
+    "base_url": "https://thea-dusky.vercel.app",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo_text": "THEA"
+  },
+  "settings": {
+    "search": false,
+    "sticky_header": true,
+    "theme_switcher": false,
+    "default_theme": "light",
+    "blog_folder": "blog"
+  }
+}
